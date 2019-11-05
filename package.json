@@ -1,0 +1,43 @@
+{
+  "name": "jwt-nodejs-user-onboarding",
+  "version": "1.0.0",
+  "description": "An easy-to-follow sample code for a User Onboarding System (Registration, Login and Jwt-Authentication) using the popular stack nodejs-express-mongoose-jsonwebtoken-hapijoi.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enyeahgo/jwt-nodejs-user-onboarding.git"
+  },
+  "keywords": [
+    "An",
+    "easy-to-follow",
+    "sample",
+    "code",
+    "for",
+    "a",
+    "User",
+    "Onboarding",
+    "System",
+    "(Registration",
+    "Login",
+    "and",
+    "Jwt-Authentication)",
+    "using",
+    "the",
+    "popular",
+    "stack",
+    "nodejs",
+    "express",
+    "mongoose",
+    "jsonwebtoken",
+    "hapijoi"
+  ],
+  "author": "Inigo Orosco II",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enyeahgo/jwt-nodejs-user-onboarding/issues"
+  },
+  "homepage": "https://github.com/enyeahgo/jwt-nodejs-user-onboarding#readme"
+}
