@@ -1,0 +1,116 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>Registration</title>
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	</head>
+	<body>
+		
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-8 mt-3 mb-3">
+					<strong><h5 class="text-center">REGISTRATION</h5></strong>
+					<hr>
+					
+					<div class="alert alert-danger alert-dismissible" id="notification" style="display:none">
+					<strong>Oh Snap!</strong>
+					<p id="error"></p>
+					</div>
+					
+					<form action="/api/user/register" method="POST" id="regform">
+						<!--<p>-->
+						<!--<input type="text" class="form-control" name="uname" placeholder="Username">-->
+						<!--<p>-->
+						<!--<button type="submit" class="btn btn-lg btn-primary">Submit</button>-->
+						<p>
+						<label>Username</label>
+						<input placeholder="Username" name="uname" id="uname" type="text" class="form-control" minlength="6" required>
+						<p>
+						<label>Email</label>
+						<input placeholder="Email" name="email" id="email" type="email" class="form-control" required>
+						<p>
+						<label>Password</label>
+						<input placeholder="Password" name="pass" id="pass" type="password" class="form-control" minlength="8" required>
+						<p>
+						<label>Retype Password</label>
+						<input placeholder="Retype Password" name="rpass" id="rpass" type="password" class="form-control" required>
+						<p>
+						</form>
+						<div class="col text-center">
+						<button class="btn btn-lg btn-primary" onclick="submitForm()">Submit</button>
+						</div>
+				</div>
+			</div>
+		</div>
+		
+	<script>
+		function submitForm(){
+			var uname = document.getElementById('uname').value;
+			var email = document.getElementById('email').value;
+			var pass = document.getElementById('pass').value;
+			var rpass = document.getElementById('rpass').value;
+			
+			if(uname && email && pass && rpass){
+				
+				if(validateEmail(email)){
+					
+					if(uname.length > 5){
+						
+						if(pass!=rpass){
+							document.getElementById('error').innerHTML = "Password Mismatch!";
+							document.getElementById('notification').style.display = 'none';
+							sleep(500).then( () => {
+								document.getElementById('notification').style.display = 'block';
+							});
+						} else {
+							if(passValid(pass)){
+								document.getElementById('regform').submit();
+							} else {
+								document.getElementById('error').innerHTML = "Very weak password. Password must have at least one uppercase letter, at least one lower case letter, at least one digit, at least one special character and at least 8-character long.";
+								document.getElementById('notification').style.display = 'none';
+								sleep(500).then( () => {
+									document.getElementById('notification').style.display = 'block';
+								});
+							}
+						}
+					} else {
+						document.getElementById('error').innerHTML = "Username must be at least 6-character long.";
+						document.getElementById('notification').style.display = 'none';
+						sleep(500).then( () => {
+						document.getElementById('notification').style.display = 'block';
+						});
+					}
+					
+				} else {
+					document.getElementById('error').innerHTML = "Please provide a valid email.";
+					document.getElementById('notification').style.display = 'none';
+					sleep(500).then( () => {
+						document.getElementById('notification').style.display = 'block';
+					});
+				}
+			} else {
+				document.getElementById('error').innerHTML = "Please fill-out all fields.";
+				document.getElementById('notification').style.display = 'none';
+					sleep(500).then( () => {
+						document.getElementById('notification').style.display = 'block';
+					});
+			}
+		}
+		
+		function passValid(value) {
+			return /[\@\#\$\%\^\&\*\(\)\_\+\!]/.test(value) && /[a-z]/.test(value) && /[0-9]/.test(value) && /[A-Z]/.test(value);
+		}
+		function validateEmail(email) {
+			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			return re.test(email);
+		}
+		
+		function sleep (time) {
+			return new Promise((resolve) => setTimeout(resolve, time));
+		}
+		
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+	</body>
+</html>

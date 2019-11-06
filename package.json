@@ -4,7 +4,7 @@
   "description": "An easy-to-follow sample code for a User Onboarding System (Registration, Login and Jwt-Authentication) using the popular stack nodejs-express-mongoose-jsonwebtoken-hapijoi.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -42,5 +42,10 @@
   "homepage": "https://github.com/enyeahgo/jwt-nodejs-user-onboarding#readme",
   "devDependencies": {
     "express": "^4.17.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.7.7"
   }
 }
