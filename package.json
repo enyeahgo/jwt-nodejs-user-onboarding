@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/enyeahgo/jwt-nodejs-user-onboarding#readme",
   "devDependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
